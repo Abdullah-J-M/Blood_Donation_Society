@@ -36,11 +36,15 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-gem 'slim', '~> 3.0', '>= 3.0.6'
-gem 'rubocop', '~> 0.80.1'
 gem 'bootstrap', '~> 4.4.1'
+
 gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
 
+gem 'rubocop', '~> 0.80.1'
+
+gem 'slim', '~> 3.0', '>= 3.0.6'
+
+gem 'overcommit'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -50,6 +54,7 @@ end
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
+
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
