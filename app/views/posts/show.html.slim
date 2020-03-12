@@ -1,0 +1,8 @@
+h2 Showing selected articles
+
+p Title: #{@post.title}
+p Description:  #{@post.description}
+
+=link_to 'Edit the post   ', edit_post_path
+=link_to 'Back ', posts_path
+=link_to 'Delete', post_path, method: :delete, data: {confirm: "Are you sure?"}
