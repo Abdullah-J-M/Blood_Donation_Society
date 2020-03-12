@@ -1,2 +1,48 @@
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'vendor/**/*'
+    - 'bin/**/*'
+    - 'lib/api_tasters/routes.rb'
+Layout/LineLength:
+  Max: 120
+  AutoCorrect: true
+  Exclude:
+    - 'config/**/*'
+Style/NumericPredicate:
+  Enabled: false
+Naming/MethodParameterName:
+  Enabled: false
+Metrics/BlockNesting:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
+Metrics/ModuleLength:
+  Enabled: false
+Metrics/AbcSize:
+  Enabled: false
+Metrics/ClassLength:
+  Enabled: false
+Metrics/BlockLength:
+  Enabled: false
+Metrics/CyclomaticComplexity:
+  Enabled: false
+Metrics/PerceivedComplexity:
+  Enabled: false
+Style/NumericLiterals:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+Style/RescueModifier:
+  Enabled: false
+Style/HashEachMethods:
+  Enabled: false
+Style/HashTransformKeys:
+  Enabled: false
+Style/HashTransformValues:
+  Enabled: false
