@@ -13,5 +13,11 @@
  *= require_tree .
  *= require_self
  */
- 
+
 @import "bootstrap";
+@import 'normalize';
+
+.page_wrapper {
+  padding: 1.9em;
+  width: 70%;
+}

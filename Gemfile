@@ -38,6 +38,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'bootstrap', '~> 4.4.1'
 
+gem 'bootstrap-sass', '~> 3.4.1'
+
 gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
 
 gem 'rubocop', '~> 0.80.1'
