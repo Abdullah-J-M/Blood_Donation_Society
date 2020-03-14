@@ -1,10 +1,11 @@
-.container
-  h1 Blood Donation Society
-  h3 Hold up, we'll be right there
-  p Coming Soon
-
-  =link_to 'About', pages_about_path
-  br
-  =link_to 'New Post', new_post_path
-  br
-  =link_to 'All the posts', posts_path
+.jumbotron
+  h1.display-4.text-center.font-weight-bold
+    | Blood Donation Society
+  p.lead.text-center
+    | Hold up, we'll be right there
+  hr.my-4
+  p.text-center.font-weight-bold
+    | COMING SOON
+  div.text-center
+    a.btn.btn-primary.btn-lg[href= pages_about_path role="button"]
+      | Learn more

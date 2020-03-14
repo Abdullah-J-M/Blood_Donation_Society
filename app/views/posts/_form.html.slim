@@ -7,17 +7,17 @@
         = msg
 .row
   .col-lg-12
-    = form_for(@post, :html => {class: "form-horizontal", role: "form"}) do |f|
+    = form_with(model: @post, :html => {class: "form-horizontal", role: "form"}) do |f|
       .form-group
         .control-label.col-sm-2
           = f.label :title
         .col-lg-12.col-sm-6
-          = f.text_field :title, class: "form-control", placeholder: "Title of article", autofocus: true
+          = f.text_field :title, class: "form-control", placeholder: "Title of post", autofocus: true
       .form-group
         .control-label.col-sm-2
           = f.label :description
         .col-sm-6.col-lg-12
-          = f.text_area :description, rows: 10, class: "form-control", placeholder: "Body of article"
+          = f.text_area :description, rows: 2, class: "form-control", placeholder: "Add any details if any"
       .form-group
         .col-sm-offset-2.col-sm-10
           = f.submit class: 'btn btn-primary btn-large'
