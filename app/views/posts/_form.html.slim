@@ -13,6 +13,21 @@
           = f.label :title
         .col-lg-12.col-sm-6
           = f.text_field :title, class: "form-control", placeholder: "Title of post", autofocus: true
+
+      .form-row
+        .col-lg-5
+          .form-group
+            .control-label.col-sm-2
+              = f.label :telephone
+            .col-lg-12.col-md-6.col-sm-3
+              = f.telephone_field :telephone, class: 'form-control', placeholder: "Add Requesters telephone number"
+
+          .form-group
+            .control-label.col-lg-12.col-md-6.col-sm-2
+              = f.label "Blood type"
+            .col-lg-6.col-md-6.col-sm-3
+              = f.select(:bloodtype, options_for_select([['AB+','AB+'],['AB-','AB-'],['A+','A+'],['A-','A-'],['B+','B+'],['B-','B-'],['O+','O+'],['O-','O-']]), {include_blank: 'Select your bloodtype'}, { class: 'form-control'})
+
       .form-group
         .control-label.col-sm-2
           = f.label :description
@@ -42,3 +57,20 @@
 /   p
 /     = f.submit 'Submit'
 
+
+/ .row
+/   .col-lg-12
+/     = form_with(model: @post, :html => {class: "form-horizontal", role: "form"}) do |f|
+/       .form-group
+/         .control-label.col-sm-2
+/           = f.label :title
+/         .col-lg-12.col-sm-6
+/           = f.text_field :title, class: "form-control", placeholder: "Title of post", autofocus: true
+/       .form-group
+/         .control-label.col-sm-2
+/           = f.label :description
+/         .col-sm-6.col-lg-12
+/           = f.text_area :description, rows: 2, class: "form-control", placeholder: "Add any details if any"
+/       .form-group
+/         .col-sm-offset-2.col-sm-10
+/           = f.submit class: 'btn btn-primary btn-large'
