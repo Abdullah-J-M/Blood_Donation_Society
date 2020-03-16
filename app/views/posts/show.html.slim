@@ -21,7 +21,7 @@
     p.card-text
       =@post.description
 
-    =link_to 'Edit the post  ', edit_post_path, class: 'btn btn-sm btn-warning'
+    = link_to 'Edit the post  ', edit_post_path, class: 'btn btn-sm btn-warning'
     | |
     =link_to 'Delete', post_path, method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger'
 
