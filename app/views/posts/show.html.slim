@@ -1,26 +1,26 @@
 .card.mt-5
   .card-body.bg-light
     h4.card-title.font-weight-bold.text-center
-      =@post.title
+      = @post.title
     .row.mt-3
       .col-lg-4
         h5.card-title.font-weight-bold
           | Requester:
-          =@post.requester
+          = @post.requester
 
       .col-lg-4
         h5.card-title.font-weight-bold
           | Telephone Number:
-          =@post.telephone
+          = @post.telephone
 
       .col-lg-4
         h5.card-title.font-weight-bold
           | Required BloodType:
-          =@post.bloodtype
+          = @post.bloodtype
 
     p.card-text
-      =@post.description
+      = @post.description
 
     = link_to 'Edit the post  ', edit_post_path, class: 'btn btn-sm btn-warning'
     | |
-    =link_to 'Delete', post_path, method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger'
+    = link_to 'Delete', post_path, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-sm btn-danger'
