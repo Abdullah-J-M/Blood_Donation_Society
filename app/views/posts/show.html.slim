@@ -1,8 +1,38 @@
-h2 Showing selected articles
+.card.mt-5
+  .card-body.bg-light
+    h4.card-title.font-weight-bold.text-center
+      =@post.title
+    .row.mt-3
+      .col-lg-4
+        h5.card-title.font-weight-bold
+          | Requester:
+          =@post.requester
 
-p Title: #{@post.title}
-p Description:  #{@post.description}
+      .col-lg-4
+        h5.card-title.font-weight-bold
+          | Telephone Number:
+          =@post.telephone
 
-=link_to 'Edit the post   ', edit_post_path
-=link_to 'Back ', posts_path
-=link_to 'Delete', post_path, method: :delete, data: {confirm: "Are you sure?"}
+      .col-lg-4
+        h5.card-title.font-weight-bold
+          | Required BloodType:
+          =@post.bloodtype
+
+    p.card-text
+      =@post.description
+
+    =link_to 'Edit the post  ', edit_post_path, class: 'btn btn-sm btn-warning'
+    | |
+    =link_to 'Delete', post_path, method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-sm btn-danger'
+
+    / a.btn.btn-danger[href=post_path method: :delete, data: {confirm: "Are you sure?"}]
+    /   | Delete
+
+/ h2 Showing selected articles
+
+/ p Title: #{@post.title}
+/ p Description:  #{@post.description}
+
+/ =link_to 'Edit the post   ', edit_post_path
+/ =link_to 'Back ', posts_path
+/ =link_to 'Delete', post_path, method: :delete, data: {confirm: "Are you sure?"}
