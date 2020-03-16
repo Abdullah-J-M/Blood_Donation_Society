@@ -1,0 +1,47 @@
+= form_with(model: @post, local: true, :html => {class: 'form-horizontal', role: 'form'}) do |f|
+  - if @post.errors.any?
+    .alert.alert-danger[role= 'alert']
+      h3
+        = pluralize(@post.errors.count, 'error')
+        | prohibited this post from being saved:
+      ul
+        -@post.errors.full_messages.each do |msg|
+          li
+            = msg
+
+  .form
+    .row
+      .col-lg-12
+        .form-group
+          .control-label.col-sm-2
+            = f.label :title
+          .col-lg-12.col-sm-6
+            = f.text_field :title, class: 'form-control', placeholder: 'Title of post', autofocus: true
+
+    .form-row
+      .form-group.col-lg-4
+          .control-label.col-sm-2
+            = f.label 'Requester'
+          .col-lg-12.col-sm-6
+            = f.text_field :requester, class: 'form-control', placeholder: 'Enter the requesters name'
+
+      .form-group.col-lg-4
+        .control-label.col-sm-2
+          = f.label :telephone
+        .col-lg-12.col-md-6.col-sm-3
+          = f.telephone_field :telephone, class: 'form-control', placeholder: 'Add Requesters telephone number'
+
+      .form-group.col-lg-4
+        .control-label.col-lg-4.col-sm-2
+          = f.label 'Blood type'
+        .col-lg-12.col-md-6.col-sm-3
+          = f.select(:bloodtype, options_for_select(bloodytype_select), { include_blank: 'Select your bloodtype'}, { class: 'form-control' })
+
+    .form-group
+      .control-label.col-sm-2
+        = f.label :description
+      .col-sm-6.col-lg-12
+        = f.text_area :description, rows: 2, class: 'form-control', placeholder: 'Add any details if any such as address'
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        = f.submit class: 'btn btn-primary btn-large'

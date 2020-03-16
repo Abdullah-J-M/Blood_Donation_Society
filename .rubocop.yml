@@ -1,0 +1,59 @@
+# Use Ruby 2.6.3
+AllCops:
+  TargetRubyVersion: 2.6.3
+# There's no need to add documentation to each one of our classes
+Style/Documentation:
+  Enabled: false
+# Lines shouldn't be longer than 120 characters
+Layout/LineLength:
+  Max: 120
+Metrics/ClassLength:
+  Max: 120
+Metrics/AbcSize:
+  Max: 78
+# Methods shouldn't be longer than X lines
+Metrics/MethodLength:
+  Max: 15
+# Methods shouldn't have more than 4 parameters
+Metrics/ParameterLists:
+  Max: 4
+# Avoid errors for Ruby 2.6.3
+Style/FrozenStringLiteralComment:
+  Enabled: false
+# Use native Ruby comparison instead of positive?/negative?
+# Style/NumericPredicate:
+#   EnforcedStyle: comparison
+# This is giving warning -unrecognized cop Style/NumericPredicate
+# Always use double quotes for strings
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+# Use only 'raise', as opposed to 'fail', for exceptions
+Style/SignalException:
+  EnforcedStyle: only_raise
+# Use arrays of symbols without %i
+Style/SymbolArray:
+  Enabled: true
+# Multi line have their place especially in expect { } statements
+Style/BlockDelimiters:
+  Enabled: false
+# Sometimes it's much clearer to use self.*
+Style/RedundantSelf:
+  Enabled: true
+# Disable module length check in specs
+Metrics/ModuleLength:
+  Max: 120
+  Exclude:
+    - "**/*_spec.rb"
+# Disable block length check in specs
+Metrics/BlockLength:
+  Exclude:
+    - "**/*_spec.rb"
+    - "spec/support/shared_context.rb"
+    - "config/routes.rb"
+# RuboCop error solver
+Style/HashEachMethods:
+  Enabled: false
+Style/HashTransformKeys:
+  Enabled: false
+Style/HashTransformValues:
+  Enabled: false
