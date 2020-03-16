@@ -2,10 +2,10 @@
 AllCops:
   TargetRubyVersion: 2.6.3
 # There's no need to add documentation to each one of our classes
-Documentation:
+Style/Documentation:
   Enabled: false
 # Lines shouldn't be longer than 120 characters
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120
 Metrics/ClassLength:
   Max: 120
@@ -50,3 +50,10 @@ Metrics/BlockLength:
     - "**/*_spec.rb"
     - "spec/support/shared_context.rb"
     - "config/routes.rb"
+# RuboCop error solver
+Style/HashEachMethods:
+  Enabled: false
+Style/HashTransformKeys:
+  Enabled: false
+Style/HashTransformValues:
+  Enabled: false

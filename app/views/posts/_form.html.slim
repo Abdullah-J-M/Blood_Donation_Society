@@ -1,13 +1,13 @@
-=form_with(model: @post, local: true, :html => {class: "form-horizontal", role: "form"}) do |f|
+= form_with(model: @post, local: true, :html => {class: 'form-horizontal', role: 'form'}) do |f|
   - if @post.errors.any?
-    .alert.alert-danger[role="alert"]
+    .alert.alert-danger[role= 'alert']
       h3
-        =pluralize(@post.errors.count, 'error')
+        = pluralize(@post.errors.count, 'error')
         | prohibited this post from being saved:
       ul
         -@post.errors.full_messages.each do |msg|
           li
-            =msg
+            = msg
 
   .form
     .row
@@ -16,72 +16,32 @@
           .control-label.col-sm-2
             = f.label :title
           .col-lg-12.col-sm-6
-            = f.text_field :title, class: "form-control", placeholder: "Title of post", autofocus: true
+            = f.text_field :title, class: 'form-control', placeholder: 'Title of post', autofocus: true
 
     .form-row
       .form-group.col-lg-4
           .control-label.col-sm-2
             = f.label 'Requester'
           .col-lg-12.col-sm-6
-            = f.text_field :requester, class: "form-control", placeholder: "Enter the requesters name"
+            = f.text_field :requester, class: 'form-control', placeholder: 'Enter the requesters name'
 
       .form-group.col-lg-4
         .control-label.col-sm-2
           = f.label :telephone
         .col-lg-12.col-md-6.col-sm-3
-          = f.telephone_field :telephone, class: 'form-control', placeholder: "Add Requesters telephone number"
+          = f.telephone_field :telephone, class: 'form-control', placeholder: 'Add Requesters telephone number'
 
       .form-group.col-lg-4
         .control-label.col-lg-4.col-sm-2
-          = f.label "Blood type"
+          = f.label 'Blood type'
         .col-lg-12.col-md-6.col-sm-3
-          = f.select(:bloodtype, options_for_select([['AB+','AB+'],['AB-','AB-'],['A+','A+'],['A-','A-'],['B+','B+'],['B-','B-'],['O+','O+'],['O-','O-']]), { include_blank: 'Select your bloodtype'}, { class: 'form-control'})
+          = f.select(:bloodtype, options_for_select(bloodytype_select), { include_blank: 'Select your bloodtype'}, { class: 'form-control' })
 
     .form-group
       .control-label.col-sm-2
         = f.label :description
       .col-sm-6.col-lg-12
-        = f.text_area :description, rows: 2, class: "form-control", placeholder: "Add any details if any such as address"
+        = f.text_area :description, rows: 2, class: 'form-control', placeholder: 'Add any details if any such as address'
     .form-group
       .col-sm-offset-2.col-sm-10
         = f.submit class: 'btn btn-primary btn-large'
-
-
-/ Fix this error notifier !!!
-
-/ = form_with model: @post do |f|
-/   - if @post.errors.any?
-/       h2 Post was not saved due to the following reasons:
-/       ul
-/       - @post.errors.full_messages.each do |em|
-/         li
-/           = em
-
-/   p
-/     = f.label :title
-/     br
-/     = f.text_field :title
-/   p
-/     = f.label :description
-/     br
-/     = f.text_area :description
-/   p
-/     = f.submit 'Submit'
-
-
-/ .row
-/   .col-lg-12
-/     = form_with(model: @post, :html => {class: "form-horizontal", role: "form"}) do |f|
-/       .form-group
-/         .control-label.col-sm-2
-/           = f.label :title
-/         .col-lg-12.col-sm-6
-/           = f.text_field :title, class: "form-control", placeholder: "Title of post", autofocus: true
-/       .form-group
-/         .control-label.col-sm-2
-/           = f.label :description
-/         .col-sm-6.col-lg-12
-/           = f.text_area :description, rows: 2, class: "form-control", placeholder: "Add any details if any"
-/       .form-group
-/         .col-sm-offset-2.col-sm-10
-/           = f.submit class: 'btn btn-primary btn-large'
