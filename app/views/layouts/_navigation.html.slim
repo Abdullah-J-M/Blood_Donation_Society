@@ -20,5 +20,12 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
           a.dropdown-item href= '#' Another action
           .dropdown-divider
           a.dropdown-item href= '#' Something else here
-      li.nav-item
-        a.nav-link.disabled aria-disabled= 'true' href= '#' tabindex= '-1'  Disabled
+      -if user_signed_in?
+        = link_to "Sign out", destroy_user_session_path, method: :delete, class: 'nav-link'
+      -else
+        li.nav-item
+          a.nav-link href= new_user_registration_path
+            | Sign Up
+        li.nav-item
+          a.nav-link href= new_user_session_path
+            | Sign in

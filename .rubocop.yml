@@ -1,6 +1,8 @@
 # Use Ruby 2.6.3
 AllCops:
   TargetRubyVersion: 2.6.3
+  Exclude:
+    - 'db/**/*'
 # There's no need to add documentation to each one of our classes
 Style/Documentation:
   Enabled: false
