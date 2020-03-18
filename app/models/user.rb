@@ -3,6 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
-  # enum role: %i[normal moderator admin]
+  enum role: %i[normal moderator admin]
+  after_initialize do
+    self.role ||= :normal if new_record?
+  end
 end

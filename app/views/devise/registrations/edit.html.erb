@@ -4,6 +4,21 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, placeholder: 'Enter your name' %>
+  </div>
+
+  <div class="field">
+    <%= f.label 'Blood type' %><br />
+    <%= f.select(:bloodtype, options_for_select(bloodytype_select), {}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :telephone %><br />
+    <%= f.telephone_field :telephone, placeholder: 'Add Requesters telephone number' %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
