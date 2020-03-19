@@ -3,5 +3,3 @@ class PostPolicy < ApplicationPolicy
     true if user.admin?
   end
 end
-# if user.role == 'admin' || record.user == user
-# end
