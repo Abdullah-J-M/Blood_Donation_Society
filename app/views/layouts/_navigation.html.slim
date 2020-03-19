@@ -16,9 +16,10 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
         a#navbarDropdown.nav-link.dropdown-toggle aria-expanded= 'false' aria-haspopup= 'true' data-toggle= 'dropdown' href ='#' role= 'button'
           | User Options
         .dropdown-menu aria-labelledby= 'navbarDropdown'
-          a.dropdown-item href= edit_user_registration_path Edit Profile
-          a.dropdown-item href= '#' Another action
-          .dropdown-divider
+          -if user_signed_in?
+            a.dropdown-item.font-weight-bold = current_user.name
+            .dropdown-divider
+            a.dropdown-item href= edit_user_registration_path Edit Profile
           a.dropdown-item href= '#' Something else here
       -if user_signed_in?
         = link_to "Sign out", destroy_user_session_path, method: :delete, class: 'nav-link'

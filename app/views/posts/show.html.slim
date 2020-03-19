@@ -1,3 +1,4 @@
+h1.display-4.text-center.font-weight-bold.mt-5 Selected Post
 .card.mt-5
   .card-body.bg-light
     h4.card-title.font-weight-bold.text-center
@@ -18,9 +19,23 @@
           | Required BloodType:
           = @post.bloodtype
 
-    p.card-text
+    p.card-text.lead
       = @post.description
 
-    = link_to 'Edit the post  ', edit_post_path, class: 'btn btn-sm btn-warning'
-    | |
-    = link_to 'Delete', post_path, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-sm btn-danger'
+    = link_to 'Delete', post_path, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-sm btn-danger float-right'
+    = link_to 'Edit the post  ', edit_post_path, class: 'btn btn-sm btn-warning float-right mr-3'
+
+.container.mt-5
+  h5
+    = @post.comments.count
+    |  Comments
+  hr
+  = render @post.comments
+  hr
+  h3 Leave a reply
+  = render 'comments/form'
+  / = simple_form_for [@post, @post.comments.build]  do |f|
+  /   .field
+  /     = f.text_area :comment, class: "form-control"
+  /   br
+  /   = f.submit "Add Comment", class: "btn btn-primary"
