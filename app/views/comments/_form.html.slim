@@ -1,0 +1,11 @@
+= form_with(model: [@post, @post.comments.build], local: true, :html => {class: 'form-horizontal', role: 'form'}) do |f|
+    .form
+      .row
+        .col-lg-12
+          .form-group
+            .col-lg-12.col-sm-6
+              = f.text_area :comment, rows: 2, class: 'form-control', placeholder: 'Add your comment here', autofocus: true
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          = f.submit class: 'btn btn-primary btn-large'
+
