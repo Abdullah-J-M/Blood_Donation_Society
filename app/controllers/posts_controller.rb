@@ -7,6 +7,10 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def specific_indexing
+    @posts = Post.where('bloodtype =?', current_user.bloodtype)
+  end
+
   def new
     @post = current_user.posts.build
   end
@@ -46,7 +50,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :description, :telephone, :bloodtype, :requester)
+    params.require(:post).permit(:title, :description, :telephone, :bloodtype, :requester, :user_id)
   end
 
   def find_post
