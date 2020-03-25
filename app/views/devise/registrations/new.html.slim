@@ -1,0 +1,53 @@
+.container.mt-3
+  h2.display-5.text-center.font-weight-bold
+    | Sign up
+  hr
+    .d-flex.align-items-center.flex-column.justify-content-center.h-100
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = render "devise/shared/error_messages", resource: resource
+
+        .form[style = "width: 30rem;"]
+          .form-group
+            h5
+              = f.label :name, class: 'font-weight-bold'
+            = f.text_field :name, class: 'form-control', placeholder: 'Enter your name', autofocus: true
+
+          .form-group
+            h5
+              = f.label :email, class: 'font-weight-bold'
+            = f.email_field :email, class: 'form-control', autocomplete: 'Email', autofocus: true
+
+          .form-row
+            .form-group.col-lg-7
+              h5
+                = f.label :telephone, class: 'font-weight-bold'
+              = f.telephone_field :telephone, class: 'form-control', placeholder: 'Add your telephone number'
+
+            .form-group.col-lg-5
+              h5
+                = f.label 'Blood Type', class: 'font-weight-bold'
+              = f.select(:bloodtype, options_for_select(bloodytype_select), { include_blank: 'Select your bloodtype' }, { class: 'form-control' })
+
+          .form-group
+            h5.mb-1
+              = f.label :password, class: 'font-weight-bold'
+            - if @minimum_password_length
+              em
+                | (
+                = @minimum_password_length
+                |  characters minimum)
+            = f.password_field :password, class: 'form-control', autocomplete: 'new-password'
+
+          .form-group
+            h5
+              = f.label :password_confirmation, class: 'font-weight-bold'
+            = f.password_field :password_confirmation, class: 'form-control', autocomplete: 'new-password'
+
+          .actions
+            = f.submit 'Sign Up', class: 'btn btn-primary btn-large'
+
+        hr
+
+      h3.mt-2
+        | Already have an account
+      = render 'devise/shared/links'

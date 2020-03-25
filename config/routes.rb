@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'pages/home'
   get 'pages/about'
-
+  get 'posts/specific_indexing'
   resources :posts do
     resources :comments
   end
