@@ -5,14 +5,18 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Baloo+Chettan+2&display=swap' %>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= favicon_link_tag asset_path('blood.ico') %>
   </head>
   <body>
     <%= render 'layouts/navigation' %>
     <div class = "container">
       <% flash.each do |name, msg| %>
-        <div class = "alert alert-success mt-3" role="alert">
+        <div class = "alert alert-info mt-3" role="alert">
           <ul class="pt-3">
             <li><%= msg %></li>
           </ul>
