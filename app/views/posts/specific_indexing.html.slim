@@ -1,7 +1,7 @@
 h1.display-4.text-center.font-weight-bold.mt-5 All posts
 - @posts.each do |post|
   .card.mt-5.mb-5
-    .card-body.bg-light
+    .card-body.bg-secondary
       h5.card-title.font-weight-bold.text-center
         = post.title
       .row.mt-3
@@ -29,3 +29,6 @@ h1.display-4.text-center.font-weight-bold.mt-5 All posts
 
       = link_to 'Delete', post_path(post), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-sm btn-danger float-right'
       = link_to 'Show', post_path(post), class: 'btn btn-sm btn-info float-right mr-3'
+
+  - unless Volunteer.exists?(post_id: post, user_id: current_user)
+    = link_to 'Volunteer', post_volunteers_path(post), class: 'btn btn-sm btn-primary float-right mr-3', method: :post

@@ -1,0 +1,17 @@
+.container.mt-5
+  h3
+    strong
+      | Available donors to select from
+  .card.mt-4.bg-light
+    .card-body
+      h5.card-title.float-left
+        strong
+          | Name:
+      h5.card-title.float-left.ml-1
+          = volunteer.user.name
+      p.card-text.ml-3.float-right
+        = volunteer.user.telephone
+      - if volunteer.user == current_user || current_user.role == 'admin'
+/         a.card-link
+/           = link_to 'Delete', [comment.post, comment], method: :delete, data: { confirm: "Are you sure?" }
+/ =volunteer.user.name

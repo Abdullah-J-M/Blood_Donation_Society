@@ -1,6 +1,6 @@
 h1.display-4.text-center.font-weight-bold.mt-5 Selected Post
-.card.mt-5
-  .card-body.bg-light
+.card.bg-secondary.mt-5
+  .card-body
     h4.card-title.font-weight-bold.text-center
       = @post.title
     .row.mt-3
@@ -19,11 +19,15 @@ h1.display-4.text-center.font-weight-bold.mt-5 Selected Post
           | Required BloodType:
           = @post.bloodtype
 
-    p.card-text.lead
+    p.card-text.lead.text-light
       = @post.description
 
     = link_to 'Delete', post_path, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-sm btn-danger float-right'
     = link_to 'Edit the post  ', edit_post_path, class: 'btn btn-sm btn-warning float-right mr-3'
+
+hr
+= render @post.volunteers
+hr
 
 .container.mt-5
   h5

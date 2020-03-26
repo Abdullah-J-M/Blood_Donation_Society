@@ -8,6 +8,7 @@ class PostsController < ApplicationController
   end
 
   def specific_indexing
+    # @volunteer = Volunteer.all
     @posts = Post.where('bloodtype =?', current_user.bloodtype)
   end
 
@@ -50,7 +51,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :description, :telephone, :bloodtype, :requester, :user_id)
+    params.require(:post).permit(:title, :description, :telephone, :bloodtype, :requester, :user_id, :donator)
   end
 
   def find_post
