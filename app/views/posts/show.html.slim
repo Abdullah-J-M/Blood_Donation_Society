@@ -3,37 +3,67 @@ h1.display-4.text-center.font-weight-bold.mt-5 Selected Post
   .card-body
     h4.card-title.font-weight-bold.text-center
       = @post.title
-    .row.mt-3
-      .col-lg-4
-        h5.card-title.font-weight-bold
+
+    .div.d-flex.justify-content-between.mt-3
+      .div
+        h5.card-title.font-weight-bold.float-left
           | Requester:
+        h5.card-title.float-left.ml-2.text-light
           = @post.requester
 
-      .col-lg-4
-        h5.card-title.font-weight-bold
+      .div
+        h5.card-title.font-weight-bold.float-left
           | Telephone Number:
+        h5.card-title.float-left.ml-2.text-light
           = @post.telephone
 
-      .col-lg-4
-        h5.card-title.font-weight-bold
+      .div
+        h5.card-title.font-weight-bold.float-left
           | Required BloodType:
+        h5.card-title.float-left.ml-2.text-light
           = @post.bloodtype
 
     p.card-text.lead.text-light
       = @post.description
 
-    = link_to 'Delete', post_path, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-sm btn-danger float-right'
+    h5.card-title.font-weight-bold.float-left
+      | Donator:
+    - if !@post.donator.nil?
+      h5.card-title.float-left.ml-2.text-light
+        = @post.donator
+    - else
+      h5.card-title.float-left.ml-2.font-italic.text-light
+        | No donator selected
+
+    = link_to 'Delete', post_path, method: :delete, data: { confirm: 'Are you sure' }, class: 'btn btn-sm btn-danger float-right'
     = link_to 'Edit the post  ', edit_post_path, class: 'btn btn-sm btn-warning float-right mr-3'
 
-hr
-= render @post.volunteers
-hr
+    - if @post.donator == nil && current_user.role != 'admin'
+      br
+      br
+      .d-flex.align-items-center.flex-column.justify-content-center
+        - unless Volunteer.exists?(post_id: @post, user_id: current_user)
+          h6.card-title.font-weight-bold
+            | Your blood can help save lives
+          br
+          = link_to 'Volunteer', post_volunteers_path(@post), class: 'btn btn-sm btn-primary float-right mr-3', method: :post, data: { confirm: "Are you want to volunteer to donate blood to #{@post.requester}" }
+
+        - if Volunteer.exists?(post_id: @post, user_id: current_user)
+          h6.card-title.font-weight-bold.text-light
+            | You have submitted your volunteer request
+
+- if @post.donator == nil && current_user.role == 'admin' && Volunteer.exists?(post_id: @post)
+  hr
+  h3
+    strong
+      | Available donors to select from
+  = render @post.volunteers
+  hr
 
 .container.mt-5
   h5
     = @post.comments.count
     |  Comments
-  hr
   = render @post.comments
   hr
   h3 Leave a reply

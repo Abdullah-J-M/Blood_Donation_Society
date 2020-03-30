@@ -8,7 +8,7 @@ class VolunteersController < ApplicationController
 
     if @volunteer.save
       flash[:notice] = 'You have successfully applied'
-      redirect_to posts_specific_indexing_path
+      redirect_back(fallback_location: root_path)
     else
       flash.now[:alert] = 'Could not apply, try again'
     end

@@ -1,6 +1,6 @@
 # Post Controller
 class PostsController < ApplicationController
-  before_action :find_post, only: %i[show edit update destroy]
+  before_action :find_post, only: %i[show edit update destroy add_donator]
   before_action :authenticate_user!, except: %i[index show]
 
   def index
@@ -42,6 +42,15 @@ class PostsController < ApplicationController
     end
   end
 
+  def add_donator
+    if @post.update(add_donator_params)
+      flash[:notice] = 'The donator was successfully updated'
+      redirect_to @post
+    else
+      flash[:alert] = 'The donator was not updated'
+    end
+  end
+
   def destroy
     authorize @post
     @post.destroy
@@ -52,6 +61,10 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :description, :telephone, :bloodtype, :requester, :user_id, :donator)
+  end
+
+  def add_donator_params
+    params.permit(:donator)
   end
 
   def find_post

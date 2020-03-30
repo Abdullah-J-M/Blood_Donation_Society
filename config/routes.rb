@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'pages/home'
   get 'pages/about'
   get 'posts/specific_indexing'
+  patch 'posts/:id(.:format)', to: 'posts#add_donator', as: 'add_donator'
   resources :posts do
     resources :comments
     resources :volunteers, only: %i[create destroy]
