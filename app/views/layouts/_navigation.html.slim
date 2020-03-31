@@ -5,7 +5,7 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
   #navbarSupportedContent.collapse.navbar-collapse
     ul.navbar-nav.mr-auto
       li.nav-item.active
-        - if user_signed_in? && current_user.role == 'admin'
+        - if user_signed_in? && current_user.admin?
           a.nav-link href= posts_path
             | Index
             span.sr-only (current)
@@ -14,7 +14,7 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
           a.nav-link href= posts_specific_indexing_path
             | Your Posts
         li.nav-item
-          - if current_user.role == 'admin'
+          - if current_user.admin?
             a.nav-link href= new_post_path
               | Create Post
     ul.navbar-nav.navbar-right

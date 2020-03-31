@@ -8,8 +8,7 @@ class PostsController < ApplicationController
   end
 
   def specific_indexing
-    # @volunteer = Volunteer.all
-    @posts = Post.where('bloodtype =?', current_user.bloodtype)
+    @posts = Post.where(bloodtype: current_user.bloodtype)
   end
 
   def new

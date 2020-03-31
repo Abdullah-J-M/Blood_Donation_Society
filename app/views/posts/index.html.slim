@@ -21,7 +21,7 @@ h1.display-4.text-center.font-weight-bold.mt-5 All posts
         .div
           h5.card-title.font-weight-bold.float-left
             | Donator:
-          - if post.donator != nil
+          - if !post.donator.blank?
             h5.card-title.float-left.ml-2
               = post.donator
           - else
@@ -35,9 +35,9 @@ h1.display-4.text-center.font-weight-bold.mt-5 All posts
         = post.comments.count
         |  Comments
 
-      - if current_user.role == 'admin'
+      - if current_user.admin?
         p.float-left.text-muted.mt-1.ml-4
-          = Volunteer.where('post_id=?', post).count
+          = Volunteer.where(post_id: post).count
           |  Volunteers
 
       = link_to 'Delete', post_path(post), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-sm btn-danger float-right'

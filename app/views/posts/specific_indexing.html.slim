@@ -21,7 +21,7 @@ h1.display-4.text-center.font-weight-bold.mt-5 All posts
         .div
           h5.card-title.font-weight-bold.float-left
             | Donator:
-          - if post.donator != nil
+          - if !post.donator.blank?
             h5.card-title.float-left.ml-2
               = post.donator
           - else
@@ -38,7 +38,7 @@ h1.display-4.text-center.font-weight-bold.mt-5 All posts
       = link_to 'Delete', post_path(post), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-sm btn-danger float-right'
       = link_to 'Show', post_path(post), class: 'btn btn-sm btn-info float-right mr-3'
 
-      - if post.donator == nil && current_user.role != 'admin'
+      - if donator_check(post, current_user)
         br
         br
         .d-flex.align-items-center.flex-column.justify-content-center

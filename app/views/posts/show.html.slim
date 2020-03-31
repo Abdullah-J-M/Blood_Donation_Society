@@ -28,7 +28,7 @@ h1.display-4.text-center.font-weight-bold.mt-5 Selected Post
 
     h5.card-title.font-weight-bold.float-left
       | Donator:
-    - if !@post.donator.nil?
+    - if !@post.donator.blank?
       h5.card-title.float-left.ml-2.text-light
         = @post.donator
     - else
@@ -38,7 +38,7 @@ h1.display-4.text-center.font-weight-bold.mt-5 Selected Post
     = link_to 'Delete', post_path, method: :delete, data: { confirm: 'Are you sure' }, class: 'btn btn-sm btn-danger float-right'
     = link_to 'Edit the post  ', edit_post_path, class: 'btn btn-sm btn-warning float-right mr-3'
 
-    - if @post.donator == nil && current_user.role != 'admin'
+    - if donator_check(@post, current_user)
       br
       br
       .d-flex.align-items-center.flex-column.justify-content-center
@@ -52,7 +52,7 @@ h1.display-4.text-center.font-weight-bold.mt-5 Selected Post
           h6.card-title.font-weight-bold.text-light
             | You have submitted your volunteer request
 
-- if @post.donator == nil && current_user.role == 'admin' && Volunteer.exists?(post_id: @post)
+- if volunteer_show_check(@post, current_user)
   hr
   h3
     strong
