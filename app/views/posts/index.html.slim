@@ -4,21 +4,29 @@ h1.display-4.text-center.font-weight-bold.mt-5 All posts
     .card-body.bg-light
       h5.card-title.font-weight-bold.text-center
         = post.title
-      .row.mt-3
-        .col-lg-4
-          h6.card-title.font-weight-bold
+
+      .div.d-flex.justify-content-between.mt-3
+        .div
+          h5.card-title.font-weight-bold.float-left
             | Requester:
+          h5.card-title.float-left.ml-2
             = post.requester
 
-        .col-lg-4
-          h6.card-title.font-weight-bold
-            | Telephone Number:
-            = post.telephone
-
-        .col-lg-4
-          h6.card-title.font-weight-bold
+        .div
+          h5.card-title.font-weight-bold.float-left
             | Required BloodType:
+          h5.card-title.float-left.ml-2
             = post.bloodtype
+
+        .div
+          h5.card-title.font-weight-bold.float-left
+            | Donator:
+          - if post.donator != nil
+            h5.card-title.float-left.ml-2
+              = post.donator
+          - else
+            h5.card-title.float-left.ml-2.font-italic
+              | No donator selected
 
       p.card-text.lead
         = truncate(post.description, length: 100)
@@ -26,6 +34,11 @@ h1.display-4.text-center.font-weight-bold.mt-5 All posts
       p.float-left.text-muted.mt-1.ml-2
         = post.comments.count
         |  Comments
+
+      - if current_user.role == 'admin'
+        p.float-left.text-muted.mt-1.ml-4
+          = Volunteer.where('post_id=?', post).count
+          |  Volunteers
 
       = link_to 'Delete', post_path(post), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-sm btn-danger float-right'
       = link_to 'Show', post_path(post), class: 'btn btn-sm btn-info float-right mr-3'

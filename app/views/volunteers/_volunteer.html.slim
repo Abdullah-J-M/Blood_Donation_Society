@@ -1,0 +1,18 @@
+.container.mt-2
+  .card.mt-4.bg-light
+    .card-body
+      .div
+        h5.card-title.float-left
+          strong
+            | Name:
+        h5.card-title.float-left.ml-1
+            = volunteer.user.name
+        p.card-text.ml-3.float-right
+          = volunteer.user.telephone
+
+      = link_to 'select', add_donator_path(@post, donator: volunteer.user.name), class: 'btn btn-sm btn-primary float-right mr-3', method: :patch, data: { confirm: "Are you sure you want to choose #{volunteer.user.name} as the donor?" }
+
+/ - if volunteer.user == current_user || current_user.role == 'admin'
+/         a.card-link
+/           = link_to 'Delete', [comment.post, comment], method: :delete, data: { confirm: "Are you sure?" }
+/ =volunteer.user.name
