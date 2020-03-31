@@ -1,5 +1,5 @@
 class VolunteersController < ApplicationController
-  before_action :set_volunteer, only: %i[destroy]
+  before_action(only: %i[destroy]) { @volunteer = Volunteer.find(params[:id]) }
   before_action :find_post, only: %i[create destroy]
 
   def create
@@ -7,10 +7,10 @@ class VolunteersController < ApplicationController
     @volunteer.user = current_user
 
     if @volunteer.save
-      flash[:notice] = 'You have successfully applied'
+      flash[:notice] = 'Your volunteer application has been accepted'
       redirect_back(fallback_location: root_path)
     else
-      flash.now[:alert] = 'Could not apply, try again'
+      flash.now[:alert] = 'No response from the server, please try again!'
     end
   end
 
@@ -20,10 +20,6 @@ class VolunteersController < ApplicationController
 
   def find_post
     @post = Post.find_by_id(params[:post_id])
-  end
-
-  def set_volunteer
-    @volunteer = Volunteer.find(params[:id])
   end
 
   def volunteer_params
