@@ -13,14 +13,6 @@
               = f.label :name, class: 'font-weight-bold'
             = f.text_field :name, class: 'form-control', placeholder: 'Enter your name', autofocus: true
 
-          .form-group
-            h5
-              = f.label :email, class: 'font-weight-bold'
-            = f.email_field :email, class: 'form-control', autocomplete: 'Email', autofocus: true
-          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-            | Currently waiting confirmation for:
-            = resource.unconfirmed_email
-
           .form-row
             .form-group.col-lg-7
               h5
@@ -31,6 +23,19 @@
               h5
                 = f.label 'Blood Type', class: 'font-weight-bold'
               = f.select(:bloodtype, options_for_select(bloodytype_select), {}, { class: 'form-control' })
+
+          .form-group.text-center
+            h5
+              = f.label 'Last Blood Donation Date', class: 'font-weight-bold'
+            = f.date_select(:last_donated_date, start_year: 2010, end_year: Time.now.year, order: [:year, :month, :day ])
+
+          .form-group
+            h5
+              = f.label :email, class: 'font-weight-bold'
+            = f.email_field :email, class: 'form-control', autocomplete: 'Email', autofocus: true
+          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+            | Currently waiting confirmation for:
+            = resource.unconfirmed_email
 
           .form-group
             h5.mb-1
