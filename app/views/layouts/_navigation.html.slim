@@ -28,7 +28,7 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
               a.dropdown-item href= edit_user_registration_path Edit Profile
               a.dropdown-item href= '#' Something else here
       - if user_signed_in?
-        = link_to "Sign out", destroy_user_session_path, method: :delete, class: 'nav-link'
+        = link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link'
       - else
         li.nav-item
           a.nav-link href= new_user_registration_path
