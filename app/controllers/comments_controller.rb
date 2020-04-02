@@ -11,6 +11,7 @@ class CommentsController < ApplicationController
     @comment.name = current_user.name
 
     if @comment.save
+      flash[:notice] = 'Comment was posted successfully'
       redirect_to @post
     else
       render 'new'
@@ -20,6 +21,8 @@ class CommentsController < ApplicationController
   def destroy
     @comment = @post.comments.find(params[:id])
     @comment.destroy
+
+    flash[:notice] = 'Comment was deleted successfully'
     redirect_to post_path(@post)
   end
 

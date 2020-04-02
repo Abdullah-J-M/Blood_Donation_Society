@@ -35,8 +35,9 @@ h1.display-4.text-center.font-weight-bold.mt-5 All posts
         = post.comments.count
         |  Comments
 
-      = link_to 'Delete', post_path(post), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-sm btn-danger float-right'
-      = link_to 'Show', post_path(post), class: 'btn btn-sm btn-info float-right mr-3'
+      - if current_user.admin?
+        = link_to 'Delete', post_path(post), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-sm btn-danger float-right'
+      = link_to 'View Complete Post', post_path(post), class: 'btn btn-sm btn-info float-right mr-3'
 
       - if donator_check(post, current_user)
         br

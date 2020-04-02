@@ -6,7 +6,8 @@ module PostsHelper
   end
 
   def donator_check(post, current_user)
-    post.donator.blank? && !current_user.admin?
+    date = Date.today << 3
+    post.donator.blank? && !current_user.admin? && current_user.last_donated_date < date
   end
 
   def volunteer_show_check(post, current_user)

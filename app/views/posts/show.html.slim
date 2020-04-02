@@ -35,8 +35,9 @@ h1.display-4.text-center.font-weight-bold.mt-5 Selected Post
       h5.card-title.float-left.ml-2.font-italic.text-light
         | No donator selected
 
-    = link_to 'Delete', post_path, method: :delete, data: { confirm: 'Are you sure' }, class: 'btn btn-sm btn-danger float-right'
-    = link_to 'Edit the post  ', edit_post_path, class: 'btn btn-sm btn-warning float-right mr-3'
+    - if current_user.admin?
+      = link_to 'Delete', post_path, method: :delete, data: { confirm: 'Are you sure' }, class: 'btn btn-sm btn-danger float-right'
+      = link_to 'Edit the post  ', edit_post_path, class: 'btn btn-sm btn-warning float-right mr-3'
 
     - if donator_check(@post, current_user)
       br

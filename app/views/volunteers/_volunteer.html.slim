@@ -5,12 +5,20 @@
         h5.card-title.float-left
           strong
             | Name:
-        h5.card-title.float-left.ml-1
+        h5.card-title.ml-1
             = volunteer.user.name
-        p.card-text.ml-3.float-right
-          = volunteer.user.telephone
 
-      = link_to 'select', select_volunteer_path(@post, user_id: volunteer.user, donator: volunteer.user.name, last_donated_date: Date.today), class: 'btn btn-sm btn-primary float-right mr-3', method: :patch, data: { confirm: "Are you sure you want to choose #{volunteer.user.name} as the donor?" }
+        h5.card-title.float-left
+          strong
+            | Latest Donation Date:
+        h5.card-title.float-left.ml-1
+            = volunteer.user.last_donated_date
+            em.text-muted.ml-2
+              | (
+              = time_ago_in_words(volunteer.user.last_donated_date)
+              | )
+
+      = link_to 'Select', select_volunteer_path(@post, user_id: volunteer.user, donator: volunteer.user.name, last_donated_date: Date.today), class: 'btn btn-sm btn-primary float-right mr-3', method: :patch, data: { confirm: "Are you sure you want to choose #{volunteer.user.name} as the donor?" }
 
 / - if volunteer.user == current_user || current_user.admin?
 /         a.card-link
