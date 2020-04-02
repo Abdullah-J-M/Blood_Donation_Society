@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, path_prefix: 'my'
+  patch 'users/:id(.:format)', to: 'users#update_donated_date_post_donator', as: 'select_volunteer'
   root 'pages#home'
 
   get 'pages/home'
   get 'pages/about'
   get 'posts/specific_indexing'
-  patch 'posts/:id(.:format)', to: 'posts#add_donator', as: 'add_donator'
   resources :posts do
     resources :comments
     resources :volunteers, only: %i[create destroy]
