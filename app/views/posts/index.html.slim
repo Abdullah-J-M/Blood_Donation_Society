@@ -5,7 +5,7 @@ h1.display-4.text-center.font-weight-bold.mt-5 All posts
       h5.card-title.font-weight-bold.text-center
         = post.title
 
-      .div.d-flex.justify-content-between.mt-3
+      .d-flex.div_titles.mt-3
         .div
           h5.card-title.font-weight-bold.float-left
             | Requester:
@@ -31,14 +31,18 @@ h1.display-4.text-center.font-weight-bold.mt-5 All posts
       p.card-text.lead
         = truncate(post.description, length: 100)
 
-      p.float-left.text-muted.mt-1.ml-2
-        = post.comments.count
-        |  Comments
+      .div
+        .d-inline-flex.mt-3
+          p.float-left.text-muted.mt-1.mr
+            = post.comments.count
+            |  Comments
 
-      - if current_user.admin?
-        p.float-left.text-muted.mt-1.ml-4
-          = Volunteer.where(post_id: post).count
-          |  Volunteers
-
-      = link_to 'Delete', post_path(post), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-sm btn-danger float-right'
-      = link_to 'Show', post_path(post), class: 'btn btn-sm btn-info float-right mr-3'
+          - if current_user.admin?
+            p.float-left.text-muted.mt-1.ml-4.mr-auto
+              = Volunteer.where(post_id: post).count
+              |  Volunteers
+        .d-inline-flex.mt-3.float-right
+          .button.p-2
+            = link_to 'Delete', post_path(post), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-sm btn-danger float-right'
+          .button.p-2
+            = link_to 'Show', post_path(post), class: 'btn btn-sm btn-info float-right mr-3'
