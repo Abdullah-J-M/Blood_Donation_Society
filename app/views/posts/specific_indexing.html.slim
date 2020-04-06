@@ -5,7 +5,7 @@ h1.display-4.text-center.font-weight-bold.mt-5 All posts
       h5.card-title.font-weight-bold.text-center
         = post.title
 
-      .div.d-flex.justify-content-between.mt-3
+      .d-flex.div_titles.mt-3
         .div
           h5.card-title.font-weight-bold.float-left
             | Requester:
@@ -31,13 +31,18 @@ h1.display-4.text-center.font-weight-bold.mt-5 All posts
       p.card-text.lead
         = truncate(post.description, length: 100)
 
-      p.float-left.text-muted.mt-1.ml-2
-        = post.comments.count
-        |  Comments
+      .div
+        .d-inline-flex.mt-3
+          p.float-left.text-muted.mt-1.ml-2.mr-auto
+            = post.comments.count
+            |  Comments
 
-      - if current_user.admin?
-        = link_to 'Delete', post_path(post), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-sm btn-danger float-right'
-      = link_to 'View Complete Post', post_path(post), class: 'btn btn-sm btn-info float-right mr-3'
+        .d-inline-flex.mt-3.float-right
+          - if current_user.admin?
+            .button
+              = link_to 'Delete', post_path(post), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-sm btn-danger float-right'
+          .button
+            = link_to 'View Complete Post', post_path(post), class: 'btn btn-sm btn-info float-right mr-3'
 
       - if donator_check(post, current_user)
         br

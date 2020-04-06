@@ -1,12 +1,12 @@
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   .div.mt-5
     = render "devise/shared/error_messages", resource: resource
-  .container.mt-3
+  .container.mt-3.mb-5
     h2.display-5.text-center.font-weight-bold
       | Sign up
     hr
       .d-flex.align-items-center.flex-column.justify-content-center.h-100
-        .form[style = "width: 30rem;"]
+        .form.form_style
           .form-group
             h5
               = f.label :name, class: 'font-weight-bold'
@@ -21,7 +21,7 @@
             .form-group.col-lg-5
               h5
                 = f.label 'Blood Type', class: 'font-weight-bold'
-              = f.select(:bloodtype, options_for_select(bloodytype_select), { include_blank: 'Select your bloodtype' }, { class: 'form-control' })
+              = f.select(:bloodtype, options_for_select(bloodytype_select, selected: resource.bloodtype || nil), { include_blank: 'Select your bloodtype' }, { class: 'form-control' })
 
           .form-group.text-center
             h5
@@ -51,7 +51,7 @@
           .actions
             = f.submit 'Sign Up', class: 'btn btn-primary btn-large'
 
-        hr
+          hr
 
         h3.mt-2
           | Already have an account
